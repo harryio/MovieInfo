@@ -1,0 +1,285 @@
+<layout>
+
+    <data>
+
+        <variable
+            name="movie"
+            type="io.thappx.movieinfo.model.MovieModel"/>
+
+        <variable
+            name="castModel"
+            type="io.thappx.movieinfo.model.CastModel"/>
+
+        <variable
+            name="movieDetail"
+            type="io.thappx.movieinfo.model.MovieDetailModel"/>
+
+    </data>
+
+    <ScrollView
+        android:id="@+id/v_root_detail"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/detail_fragment_margin"
+            android:layout_marginRight="@dimen/detail_fragment_margin"
+            android:layout_marginBottom="5dp"
+            android:background="@color/primary"
+            tools:context="io.thappx.movieinfo.view.activity.MovieDetailActivity">
+
+            <ImageView
+                android:id="@+id/img_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_detail_height"
+                app:imageUrl="@{movie.backdropPath}"
+                tools:ignore="contentDescription"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/transparent"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+            <io.thappx.movieinfo.view.customviews.AmandaTextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_detail"
+                android:background="@color/primary_dark"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:minHeight="80dp"
+                android:paddingLeft="20dp"
+                android:text="@{movie.title}"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_tagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title"
+                android:layout_margin="8dp"
+                app:materialIcon="tag"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_tagline_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/tv_title"
+                android:layout_toRightOf="@id/img_tagline"
+                android:text="@string/tagline"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_tagline"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_tagline_heading"
+                android:layout_toRightOf="@id/img_tagline"
+                android:text="@{movieDetail.tagline}"
+                tools:ignore="RtlHardcoded"/>
+
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tagline"
+                android:layout_margin="8dp"
+                app:materialIcon="movie"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_genre_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/tv_tagline"
+                android:layout_toRightOf="@id/img_genre"
+                android:text="@string/genres"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_genre"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_genre_heading"
+                android:layout_toRightOf="@id/img_genre"
+                android:text="@{movie.genreString}"
+                tools:ignore="RtlHardcoded"
+                />
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_genre"
+                android:layout_margin="8dp"
+                app:materialIcon="calendar"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_release_date_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/tv_genre"
+                android:layout_toRightOf="@id/img_date"
+                android:text="@string/release_date"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_release_date_heading"
+                android:layout_toRightOf="@id/img_date"
+                android:text="@{movie.releaseDate}"
+                tools:ignore="RtlHardcoded"
+                />
+
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/vote_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_release_date"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_vote_average_heading"
+                    style="@style/HeadingTextView"
+                    android:gravity="center"
+                    android:text="@string/vote_average"
+                    app:layout_widthPercent="50%"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_vote_average"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_vote_average_heading"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(movie.voteAverage)}"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:layout_widthPercent="50%"/>
+
+                <TextView
+                    android:id="@+id/tv_vote_count_heading"
+                    style="@style/HeadingTextView"
+                    android:layout_toRightOf="@id/tv_vote_average_heading"
+                    android:gravity="center"
+                    android:text="@string/vote_count"
+                    app:layout_widthPercent="50%"
+                    tools:ignore="RtlHardcoded"/>
+
+                <TextView
+                    android:id="@+id/tv_vote_count"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_vote_average_heading"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_vote_average"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(movie.voteCount)}"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:layout_widthPercent="50%"
+                    tools:ignore="RtlHardcoded"/>
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_cast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vote_container"
+                android:layout_margin="8dp"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_cast_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/vote_container"
+                android:layout_toRightOf="@id/img_cast"
+                android:text="@string/cast"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_cast"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_cast_heading"
+                android:layout_toRightOf="@id/img_cast"
+                android:text="@{castModel.cast}"
+                tools:ignore="RtlHardcoded"
+                />
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_cast"
+                android:layout_margin="8dp"
+                app:materialIcon="information"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_description_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/tv_cast"
+                android:layout_toRightOf="@id/img_description"
+                android:text="@string/description"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_description_heading"
+                android:layout_toRightOf="@id/img_description"
+                android:text="@{movie.overview}"
+                tools:ignore="RtlHardcoded"
+                />
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/img_production_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_description"
+                android:layout_margin="8dp"
+                app:materialIcon="web"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_production_company_heading"
+                style="@style/HeadingTextView"
+                android:layout_below="@id/tv_description"
+                android:layout_toRightOf="@id/img_production_company"
+                android:text="@string/production_companies"
+                tools:ignore="RtlHardcoded"/>
+
+            <TextView
+                android:id="@+id/tv_production_company"
+                style="@style/DescriptionTextView"
+                android:layout_below="@id/tv_production_company_heading"
+                android:layout_toRightOf="@id/img_description"
+                android:text="@{movieDetail.companies}"
+                tools:ignore="RtlHardcoded"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</layout>

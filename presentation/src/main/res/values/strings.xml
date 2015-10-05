@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MovieInfo</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Error messages-->
+    <string name="error_generic">There was an application error</string>
+    <string name="error_no_internet_connection">No Internet Connection!</string>
+    <string name="error_api_connection_error">Cannot connect to server</string>
+
+    <string name="title_activity_movie_detail">MovieDetailActivity</string>
+    <string name="tagline"><u>TAGLINE</u></string>
+    <string name="release_date"><u>RELEASE DATE</u></string>
+    <string name="vote_average"><u>VOTE AVERAGE</u></string>
+    <string name="vote_count"><u>VOTE COUNT</u></string>
+    <string name="cast"><u>CAST</u></string>
+    <string name="genres"><u>GENRES</u></string>
+    <string name="description"><u>DESCRIPTION</u></string>
+
+    <string name="font_alisandra">alisandra.ttf</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="production_companies"><u>PRODUCTION COMPANIES</u></string>
+    <string name="retry">Retry</string>
+</resources>

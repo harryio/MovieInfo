@@ -1,0 +1,69 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven { url '/opt/android-sdk/extras/android/m2repository' }
+    }
+}
+
+ext {
+    //Android
+    androidApplicationId = "io.theappx.movieinfo"
+    androidBuildToolsVersion = "23.0.0"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+    androidVersionCode = 1
+    androidVersionName = '1.0'
+
+    //Libraries
+    retrofitVersion = '2.0.0-beta2'
+    googleVersion = '23.0.0'
+    annotationVersion = '23.0.0'
+    butterknifeVersion = '7.0.1'
+    rxjavaVersion = '1.0.13'
+    rxandroidVersion = '1.0.1'
+    storioVersion = '1.4.0'
+    daggerVersion = '2.0.1'
+    javaxAnnotationVersion = '10.0-b28'
+    glideVersion = '3.6.1'
+    materialIconLibVersion = '1.0.4'
+    smoothProgressBarVersion = '1.1.0'
+
+    presentationDependencies = [
+            daggerCompiler      : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger              : "com.google.dagger:dagger:${daggerVersion}",
+            butterknife         : "com.jakewharton:butterknife:${butterknifeVersion}",
+            rxJava              : "io.reactivex:rxjava:${rxjavaVersion}",
+            rxAndroid           : "io.reactivex:rxandroid:${rxandroidVersion}",
+            appCompat           : "com.android.support:appcompat-v7:${googleVersion}",
+            javaxAnnotation     : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${googleVersion}",
+            glide               : "com.github.bumptech.glide:glide:${glideVersion}",
+            materialIconLib     : "net.steamcrafted:materialiconlib:${materialIconLibVersion}",
+            percent             : "com.android.support:percent:${googleVersion}",
+            progressBar         : "com.github.castorflex.smoothprogressbar:library-circular:${smoothProgressBarVersion}",
+            designSupportLibrary: "com.android.support:design:${googleVersion}"
+    ]
+
+    domainDependencies = [
+            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger         : "com.google.dagger:dagger:${daggerVersion}",
+            rxJava         : "io.reactivex:rxjava:${rxjavaVersion}",
+            annotation     : "com.android.support:support-annotations:${googleVersion}",
+            javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}"
+    ]
+
+    dataDependencies = [
+            daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger          : "com.google.dagger:dagger:${daggerVersion}",
+            rxJava          : "io.reactivex:rxjava:${rxjavaVersion}",
+            rxAndroid       : "io.reactivex:rxandroid:${rxandroidVersion}",
+            retrofit        : "com.squareup.retrofit:retrofit:${retrofitVersion}",
+            storIo          : "com.pushtorefresh.storio:sqlite:${storioVersion}",
+            storIoAnnotation: "com.pushtorefresh.storio:sqlite-annotations:${storioVersion}",
+            storIoProcessor : "com.pushtorefresh.storio:sqlite-annotations-processor:${storioVersion}",
+            javaxAnnotation : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+            gsonConverter   : "com.squareup.retrofit:converter-gson:${retrofitVersion}",
+            retrofitRxJava  : "com.squareup.retrofit:adapter-rxjava:${retrofitVersion}"
+    ]
+}

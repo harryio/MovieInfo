@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="movie"
+            type="io.thappx.movieinfo.model.MovieModel" />
+    </data>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/v_root_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <io.thappx.movieinfo.view.customviews.SquareImageView
+            android:id="@+id/img_poster"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            app:imageUrl="@{movie.posterPath}"
+            tools:ignore="contentDescription"/>
+
+        <io.thappx.movieinfo.view.customviews.AmandaTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/tw_height"
+            android:layout_gravity="bottom"
+            android:background="@color/black_translucent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:text="@{movie.title}"
+            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+    </FrameLayout>
+</layout>
