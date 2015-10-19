@@ -3,9 +3,10 @@ package io.thappx.data.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import static io.thappx.data.database.MovieContract.MovieEntry;
+
 import static io.thappx.data.database.MovieContract.CastEntry;
 import static io.thappx.data.database.MovieContract.MovieDetailEntry;
+import static io.thappx.data.database.MovieContract.MovieEntry;
 
 public class MovieDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
@@ -47,7 +48,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
 				"CREATE TABLE " + MovieDetailEntry.TABLE_NAME + "(" +
 						MovieDetailEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
 						MovieDetailEntry.COLUMN_ID + " TEXT NOT NULL," +
-						MovieDetailEntry.COLUMN_TAGLINE + " TEXT NOT NULL," +
+						MovieDetailEntry.COLUMN_TAGLINE + " TEXT," +
 						MovieDetailEntry.COLUMN_COMPANIES + " TEXT" + ");";
 
         db.execSQL(SQL_CREATE_MOVIE_TABLE);
