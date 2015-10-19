@@ -44,7 +44,8 @@ ext {
             percent             : "com.android.support:percent:${googleVersion}",
             progressBar         : "com.github.castorflex.smoothprogressbar:library-circular:${smoothProgressBarVersion}",
             designSupportLibrary: "com.android.support:design:${googleVersion}",
-            glidePalette        : "com.github.florent37:glidepalette:${glidePaletteVersion}"
+            glidePalette        : "com.github.florent37:glidepalette:${glidePaletteVersion}",
+            palette             : "com.android.support:palette-v7:${googleVersion}"
     ]
 
     domainDependencies = [

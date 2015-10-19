@@ -64,5 +64,6 @@ dependencies {
     compile presentationDependencies.materialIconLib
     compile presentationDependencies.designSupportLibrary
     compile presentationDependencies.glidePalette
+    compile presentationDependencies.palette
     provided presentationDependencies.javaxAnnotation
 }

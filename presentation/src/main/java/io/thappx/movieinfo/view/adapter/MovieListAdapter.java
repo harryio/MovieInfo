@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.github.florent37.glidepalette.BitmapPalette;
+import com.github.florent37.glidepalette.GlidePalette;
 
 import java.util.List;
 
@@ -83,6 +85,16 @@ public class MovieListAdapter
 	public void onBindViewHolder(MovieListAdapter.MovieViewHolder holder, int position) {
 		MovieModel mMovie = mMovieList.get(position);
 		holder.setMovie(mMovie);
+
+		Glide.with(holder.mPosterImageView.getContext())
+				.load(mMovie.getPosterPath())
+				.listener(GlidePalette.with(mMovie.getPosterPath())
+						.use(GlidePalette.Profile.MUTED)
+						.intoBackground(holder.mTitleTextView, GlidePalette.Swatch.RGB)
+						.intoTextColor(holder.mTitleTextView, GlidePalette.Swatch.TITLE_TEXT_COLOR))
+				.centerCrop()
+				.animate(android.R.anim.fade_in)
+				.into(holder.mPosterImageView);
 	}
 
 	@Override

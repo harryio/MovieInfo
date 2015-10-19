@@ -7,7 +7,7 @@
             type="io.thappx.movieinfo.model.MovieModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/v_root_item"
@@ -20,13 +20,12 @@
             android:id="@+id/img_poster"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_height"
-            app:imageUrl="@{movie.posterPath}"
             tools:ignore="contentDescription"/>
 
         <io.thappx.movieinfo.view.customviews.AmandaTextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:minHeight="@dimen/tw_height"
             android:layout_gravity="bottom"
             android:background="@color/black_translucent"
@@ -34,8 +33,10 @@
             android:paddingLeft="10dp"
             android:textColor="@color/white"
             android:textSize="23sp"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:text="@{movie.title}"
             tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>
