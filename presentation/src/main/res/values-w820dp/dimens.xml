@@ -8,5 +8,4 @@
     <dimen name="column_width">220dp</dimen>
     <dimen name="image_detail_height">330dp</dimen>
     <dimen name="tw_height">90dp</dimen>
-    <dimen name="detail_fragment_margin">40dp</dimen>
 </resources>

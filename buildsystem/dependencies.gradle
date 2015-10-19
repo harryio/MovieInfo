@@ -28,6 +28,7 @@ ext {
     glideVersion = '3.6.1'
     materialIconLibVersion = '1.0.4'
     smoothProgressBarVersion = '1.1.0'
+    glidePaletteVersion = '1.0.4@aar'
 
     presentationDependencies = [
             daggerCompiler      : "com.google.dagger:dagger-compiler:${daggerVersion}",
@@ -42,7 +43,8 @@ ext {
             materialIconLib     : "net.steamcrafted:materialiconlib:${materialIconLibVersion}",
             percent             : "com.android.support:percent:${googleVersion}",
             progressBar         : "com.github.castorflex.smoothprogressbar:library-circular:${smoothProgressBarVersion}",
-            designSupportLibrary: "com.android.support:design:${googleVersion}"
+            designSupportLibrary: "com.android.support:design:${googleVersion}",
+            glidePalette        : "com.github.florent37:glidepalette:${glidePaletteVersion}"
     ]
 
     domainDependencies = [

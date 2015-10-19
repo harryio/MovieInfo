@@ -63,5 +63,6 @@ dependencies {
     compile presentationDependencies.progressBar
     compile presentationDependencies.materialIconLib
     compile presentationDependencies.designSupportLibrary
+    compile presentationDependencies.glidePalette
     provided presentationDependencies.javaxAnnotation
 }

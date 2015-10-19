@@ -4,5 +4,4 @@
     <dimen name="image_detail_height">300dp</dimen>
     <dimen name="tw_height">70dp</dimen>
     <dimen name="spacing">3dp</dimen>
-    <dimen name="detail_fragment_margin">20dp</dimen>
 </resources>

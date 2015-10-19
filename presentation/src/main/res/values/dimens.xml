@@ -8,6 +8,4 @@
     <dimen name="tw_height">50dp</dimen>
     <dimen name="image_detail_height">250dp</dimen>
     <dimen name="spacing">1dp</dimen>
-
-    <dimen name="detail_fragment_margin">0dp</dimen>
 </resources>
