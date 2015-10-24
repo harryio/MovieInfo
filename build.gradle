@@ -15,28 +15,41 @@ buildscript {
     }
 }
 
-def tmdbProperties = loadTmdbProperties()
+def properties = loadProperties()
 
 ext {
-    tmdbApiKey = tmdbProperties.getProperty("TMDB_API_KEY")
+    tmdbApiKey = properties.getProperty("TMDB_API_KEY")
+    keyPassword = properties.getProperty("KEY_PASSWORD")
+    storePassword = properties.getProperty("STORE_PASSWORD")
+    sdkPath = properties.getProperty('sdk.dir')
 }
 
-def loadTmdbProperties() {
+def loadProperties() {
     if (project.rootProject.file('local.properties').exists()) {
-        return loadTmdbFromLocalProperties()
+        return loadFromLocalProperties()
     } else {
-        return loadTmdbFromEnvironment()
+        return loadFromEnvironment()
     }
 }
 
-def loadTmdbFromLocalProperties() {
+def loadFromLocalProperties() {
     Properties localProperties = new Properties()
     localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
     return localProperties;
 }
 
-def loadTmdbFromEnvironment() {
+def loadFromEnvironment() {
     Properties localProperties = new Properties()
     localProperties.setProperty('TMDB_API_KEY', System.getenv("TMDB_API_KEY"))
+    localProperties.setProperty('KEY_PASSWORD', System.getenv("KEY_PASSWORD"))
+    localProperties.setProperty('STORE_PASSWORD', System.getenv("STORE_PASSWORD"))
+    localProperties.setProperty('sdk.dir', System.getenv('sdk.dir'))
     return localProperties
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "${sdkPath}" + '/extras/android/m2repository' }
+    }
 }
