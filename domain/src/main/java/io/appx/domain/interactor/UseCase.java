@@ -7,7 +7,6 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
-import sun.rmi.runtime.Log;
 
 public abstract class UseCase {
 	private final ThreadExecutor mThreadExecutor;
