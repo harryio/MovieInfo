@@ -1,14 +1,14 @@
 allprojects {
     repositories {
         jcenter()
-        maven { url '/opt/android-sdk/extras/android/m2repository' }
+        maven { url '/home/harry/Android/Sdk/extras/android/m2repository' }
     }
 }
 
 ext {
     //Android
     androidApplicationId = "io.theappx.movieinfo"
-    androidBuildToolsVersion = "23.0.0"
+    androidBuildToolsVersion = "23.0.1"
     androidMinSdkVersion = 15
     androidTargetSdkVersion = 23
     androidCompileSdkVersion = 23
@@ -17,8 +17,8 @@ ext {
 
     //Libraries
     retrofitVersion = '2.0.0-beta2'
-    googleVersion = '23.0.0'
-    annotationVersion = '23.0.0'
+    googleVersion = '23.0.1'
+    annotationVersion = '23.0.1'
     butterknifeVersion = '7.0.1'
     rxjavaVersion = '1.0.13'
     rxandroidVersion = '1.0.1'
@@ -52,7 +52,7 @@ ext {
             daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
             dagger         : "com.google.dagger:dagger:${daggerVersion}",
             rxJava         : "io.reactivex:rxjava:${rxjavaVersion}",
-            annotation     : "com.android.support:support-annotations:${googleVersion}",
+            annotation     : "com.android.support:support-annotations:${annotationVersion}",
             javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}"
     ]
 
