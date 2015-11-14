@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.github.florent37.glidepalette.BitmapPalette;
-import com.github.florent37.glidepalette.GlidePalette;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,11 +25,13 @@ public class MovieListAdapter
 		extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
 	private List<MovieModel> mMovieList;
 	private OnItemClickListener mItemClickListener;
+	private Context mContext;
 
-	public MovieListAdapter(List<MovieModel> pMovieList) {
+	public MovieListAdapter(Context pContext, List<MovieModel> pMovieList) {
 		if (pMovieList == null)
 			throw new NullPointerException("Movie list in adapter cannot be null");
 
+		mContext = pContext;
 		mMovieList = pMovieList;
 	}
 
@@ -85,16 +85,6 @@ public class MovieListAdapter
 	public void onBindViewHolder(MovieListAdapter.MovieViewHolder holder, int position) {
 		MovieModel mMovie = mMovieList.get(position);
 		holder.setMovie(mMovie);
-
-		Glide.with(holder.mPosterImageView.getContext())
-				.load(mMovie.getPosterPath())
-				.listener(GlidePalette.with(mMovie.getPosterPath())
-						.use(GlidePalette.Profile.MUTED)
-						.intoBackground(holder.mTitleTextView, GlidePalette.Swatch.RGB)
-						.intoTextColor(holder.mTitleTextView, GlidePalette.Swatch.TITLE_TEXT_COLOR))
-				.centerCrop()
-				.animate(android.R.anim.fade_in)
-				.into(holder.mPosterImageView);
 	}
 
 	@Override
@@ -124,10 +114,9 @@ public class MovieListAdapter
 
 	@BindingAdapter("app:imageUrl")
 	public static void setMovieImage(ImageView pMovieImage, String pUrl) {
-		Glide.with(pMovieImage.getContext())
+		Picasso.with(pMovieImage.getContext())
 				.load(pUrl)
-				.centerCrop()
-				.animate(android.R.anim.fade_in)
+                .fit()
 				.into(pMovieImage);
 	}
 }

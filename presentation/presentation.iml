@@ -109,6 +109,7 @@
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="palette-v7-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="sqlite-1.4.0" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
     <orderEntry type="library" exported="" name="sqlite-annotations-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="library-circular-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
