@@ -1,25 +1,12 @@
 package io.thappx.movieinfo.view.fragment;
 
-import android.app.Activity;
-import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,7 +22,6 @@ import io.thappx.movieinfo.presenter.MovieDetailPresenter;
 import io.thappx.movieinfo.view.MovieCastView;
 import io.thappx.movieinfo.view.MovieDetailView;
 import io.thappx.movieinfo.view.activity.MovieDetailActivity;
-import io.thappx.movieinfo.view.customviews.RevealBackgroundView;
 
 public class MovieDetailFragment extends BaseFragment
 		implements MovieCastView, MovieDetailView {

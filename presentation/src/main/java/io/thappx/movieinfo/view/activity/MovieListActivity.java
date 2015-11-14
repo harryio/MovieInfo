@@ -55,7 +55,6 @@ public class MovieListActivity extends BaseActivity
 	private void initializeInjector() {
 		mMovieComponent = DaggerMovieComponent.builder()
 				.applicationComponent(getApplicationComponent())
-				.activityModule(getActivityModule())
 				.build();
 	}
 

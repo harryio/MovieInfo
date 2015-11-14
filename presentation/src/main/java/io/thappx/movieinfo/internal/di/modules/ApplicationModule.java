@@ -1,22 +1,10 @@
 package io.thappx.movieinfo.internal.di.modules;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.pushtorefresh.storio.sqlite.SQLiteTypeMapping;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
-import com.pushtorefresh.storio.sqlite.operations.put.DefaultPutResolver;
-import com.pushtorefresh.storio.sqlite.queries.InsertQuery;
-import com.pushtorefresh.storio.sqlite.queries.UpdateQuery;
-import com.squareup.okhttp.Authenticator;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
-import java.net.Proxy;
 
 import javax.inject.Singleton;
 
@@ -46,7 +34,6 @@ import io.thappx.movieinfo.UIThread;
 import io.thappx.movieinfo.navigation.Navigator;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
 
 @Module
 public class ApplicationModule {
