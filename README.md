@@ -1,8 +1,5 @@
 # MovieInfo
 
-###Introductions
-IMDB clone using TMDB api.
-
 ###Screenshots
 ![](http://i.imgur.com/XSctlx9.jpg?1)
 ![](http://i.imgur.com/FWpS4qH.jpg?1)
@@ -26,7 +23,7 @@ IMDB clone using TMDB api.
 ### License
 
 ```
-Copyright 2015 Saúl Molinero
+Copyright 2015 Harry Singh
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
