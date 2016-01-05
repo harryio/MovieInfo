@@ -1,9 +1,27 @@
 # MovieInfo
+
+###Introductions
+IMDB clone using TMDB api.
+
 ###Screenshots
 ![](http://i.imgur.com/XSctlx9.jpg?1)
 ![](http://i.imgur.com/FWpS4qH.jpg?1)
 ![](http://i.imgur.com/gNq5jXa.jpg?1)
 ![](http://i.imgur.com/RdiXOtC.jpg?1)
+
+
+###Libraries used
+- [Picasso](https://github.com/square/picasso/)
+- [Retrofit](https://github.com/square/retrofit)
+- [Butterknife](https://github.com/JakeWharton/butterknife)
+- [RxJava](https://github.com/ReactiveX/RxJava)
+- [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [Dagger 2](http://google.github.io/dagger/)
+- [SmoothProgressBar](https://github.com/castorflex/SmoothProgressBar)
+- [Material Icon Lib](https://github.com/code-mc/material-icon-lib)
+
+###Design Pattern
+-[MVP](https://medium.com/mobiwise-blog/android-basic-project-architecture-for-mvp-72f4b33252d0#.rv5qymvvk)
 
 ### License
 
