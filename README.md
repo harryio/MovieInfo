@@ -1,6 +1,6 @@
 # MovieInfo
 ###Screenshots
-![](http://i.imgur.com/32kmtqv.jpg)
-![](http://i.imgur.com/VgQ8lNx.jpg)
-![](http://i.imgur.com/ir9uM6q.jpg)
-![](http://i.imgur.com/pOVtqis.jpg)
+![](http://i.imgur.com/XSctlx9.jpg?1)
+![](http://i.imgur.com/FWpS4qH.jpg?1)
+![](http://i.imgur.com/gNq5jXa.jpg?1)
+![](http://i.imgur.com/RdiXOtC.jpg?1)
