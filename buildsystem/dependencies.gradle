@@ -22,6 +22,7 @@ ext {
     materialIconLibVersion = '1.0.4'
     smoothProgressBarVersion = '1.1.0'
     glidePaletteVersion = '1.0.4@aar'
+    picassoVersion = '2.5.2'
 
     presentationDependencies = [
             daggerCompiler      : "com.google.dagger:dagger-compiler:${daggerVersion}",
@@ -38,7 +39,8 @@ ext {
             progressBar         : "com.github.castorflex.smoothprogressbar:library-circular:${smoothProgressBarVersion}",
             designSupportLibrary: "com.android.support:design:${googleVersion}",
             glidePalette        : "com.github.florent37:glidepalette:${glidePaletteVersion}",
-            palette             : "com.android.support:palette-v7:${googleVersion}"
+            palette             : "com.android.support:palette-v7:${googleVersion}",
+            picasso             : "com.squareup.picasso:picasso:${picassoVersion}"
     ]
 
     domainDependencies = [

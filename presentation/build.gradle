@@ -70,5 +70,6 @@ dependencies {
     compile presentationDependencies.designSupportLibrary
     compile presentationDependencies.glidePalette
     compile presentationDependencies.palette
+    compile presentationDependencies.picasso
     provided presentationDependencies.javaxAnnotation
 }

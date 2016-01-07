@@ -39,6 +39,12 @@ public class RestApiImpl implements RestApi {
 
     @Override
     public Observable<List<MovieEntity>> getPopularMovies() {
+		Observable.create(new Observable.OnSubscribe<String>() {
+			@Override
+			public void call(Subscriber<? super String> t) {
+
+			}
+		});
         return Observable.create((t) -> {
             if (isThereInternetConnection()) {
                 Call<MovieWrapper> lCall = mMovieService.getPopularMovies(BuildConfig.TMDB_API_KEY);

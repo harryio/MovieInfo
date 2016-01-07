@@ -4,15 +4,14 @@ import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.github.florent37.glidepalette.BitmapPalette;
-import com.github.florent37.glidepalette.GlidePalette;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,112 +21,108 @@ import butterknife.OnClick;
 import io.thappx.movieinfo.R;
 import io.thappx.movieinfo.databinding.LayoutMovieItemBinding;
 import io.thappx.movieinfo.model.MovieModel;
+import io.thappx.movieinfo.util.DrawableUtils;
 
 public class MovieListAdapter
-		extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
-	private List<MovieModel> mMovieList;
-	private OnItemClickListener mItemClickListener;
+        extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
+    private List<MovieModel> mMovieList;
+    private OnItemClickListener mItemClickListener;
+    private Context mContext;
 
-	public MovieListAdapter(List<MovieModel> pMovieList) {
-		if (pMovieList == null)
-			throw new NullPointerException("Movie list in adapter cannot be null");
+    public MovieListAdapter(Context pContext, List<MovieModel> pMovieList) {
+        if (pMovieList == null)
+            throw new NullPointerException("Movie list in adapter cannot be null");
 
-		mMovieList = pMovieList;
-	}
+        mContext = pContext;
+        mMovieList = pMovieList;
+    }
 
-	static class MovieViewHolder extends RecyclerView.ViewHolder {
-		@Bind(R.id.img_poster)
-		ImageView mPosterImageView;
-		@Bind(R.id.tv_title)
-		TextView mTitleTextView;
-		@Bind(R.id.v_root_item)
-		View mRootView;
-		LayoutMovieItemBinding mBinding;
+    static class MovieViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.img_poster)
+        ImageView mPosterImageView;
+        @Bind(R.id.tv_title)
+        TextView mTitleTextView;
+        @Bind(R.id.v_root_item)
+        View mRootView;
+        @Bind(R.id.v_background)
+        View mBackgroundView;
+        LayoutMovieItemBinding mBinding;
 
-		private OnItemClickListener mOnItemClickListener;
-		private MovieModel mMovieModel;
+        private OnItemClickListener mOnItemClickListener;
+        private MovieModel mMovieModel;
 
-		public MovieViewHolder(View itemView) {
-			super(itemView);
+        public MovieViewHolder(View itemView) {
+            super(itemView);
 
-			mBinding = DataBindingUtil.bind(itemView);
-			ButterKnife.bind(this, itemView);
-		}
+            mBinding = DataBindingUtil.bind(itemView);
+            ButterKnife.bind(this, itemView);
+        }
 
-		@OnClick(R.id.v_root_item)
-		public void onItemClicked() {
-			int[] rootViewPosition = new int[2];
-			mRootView.getLocationOnScreen(rootViewPosition);
-			mOnItemClickListener.onMovieItemClicked(mMovieModel, rootViewPosition);
-		}
+        @OnClick(R.id.v_root_item)
+        public void onItemClicked() {
+            int[] rootViewPosition = new int[2];
+            mRootView.getLocationOnScreen(rootViewPosition);
+            mOnItemClickListener.onMovieItemClicked(mMovieModel, rootViewPosition);
+        }
 
-		void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
-			mOnItemClickListener = pOnItemClickListener;
-		}
+        void setOnItemClickListener(OnItemClickListener pOnItemClickListener) {
+            mOnItemClickListener = pOnItemClickListener;
+        }
 
-		void setMovie(MovieModel pMovie) {
-			mBinding.setMovie(pMovie);
-			mMovieModel = pMovie;
-		}
-	}
+        void setMovie(MovieModel pMovie) {
+            mBinding.setMovie(pMovie);
+            mMovieModel = pMovie;
+        }
+    }
 
-	@Override
-	public MovieListAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View itemLayout = LayoutInflater
-				.from(parent.getContext()).inflate(R.layout.layout_movie_item, parent, false);
+    @Override
+    public MovieListAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemLayout = LayoutInflater
+                .from(parent.getContext()).inflate(R.layout.layout_movie_item, parent, false);
 
-		MovieViewHolder lMovieViewHolder = new MovieViewHolder(itemLayout);
-		lMovieViewHolder.setOnItemClickListener(mItemClickListener);
-		return lMovieViewHolder;
-	}
+        MovieViewHolder lMovieViewHolder = new MovieViewHolder(itemLayout);
+        lMovieViewHolder.setOnItemClickListener(mItemClickListener);
+        return lMovieViewHolder;
+    }
 
-	@Override
-	public void onBindViewHolder(MovieListAdapter.MovieViewHolder holder, int position) {
-		MovieModel mMovie = mMovieList.get(position);
-		holder.setMovie(mMovie);
+    @Override
+    public void onBindViewHolder(MovieListAdapter.MovieViewHolder holder, int position) {
+        MovieModel mMovie = mMovieList.get(position);
+        holder.setMovie(mMovie);
+        holder.mBackgroundView.setBackground(DrawableUtils
+                .getListItemBackground(0xaa000000, 4, Gravity.BOTTOM));
+    }
 
-		Glide.with(holder.mPosterImageView.getContext())
-				.load(mMovie.getPosterPath())
-				.listener(GlidePalette.with(mMovie.getPosterPath())
-						.use(GlidePalette.Profile.MUTED)
-						.intoBackground(holder.mTitleTextView, GlidePalette.Swatch.RGB)
-						.intoTextColor(holder.mTitleTextView, GlidePalette.Swatch.TITLE_TEXT_COLOR))
-				.centerCrop()
-				.animate(android.R.anim.fade_in)
-				.into(holder.mPosterImageView);
-	}
+    @Override
+    public int getItemCount() {
+        return mMovieList.size();
+    }
 
-	@Override
-	public int getItemCount() {
-		return mMovieList.size();
-	}
+    public void setUpListener(OnItemClickListener pItemClickListener) {
+        mItemClickListener = pItemClickListener;
+    }
 
-	public void setUpListener(OnItemClickListener pItemClickListener) {
-		mItemClickListener = pItemClickListener;
-	}
+    public void setMovieList(List<MovieModel> pMovieList) {
+        validateMovieList(pMovieList);
+        mMovieList = pMovieList;
+        notifyDataSetChanged();
+    }
 
-	public void setMovieList(List<MovieModel> pMovieList) {
-		validateMovieList(pMovieList);
-		mMovieList = pMovieList;
-		notifyDataSetChanged();
-	}
+    private void validateMovieList(List<MovieModel> pMovieList) {
+        if (pMovieList == null)
+            throw new NullPointerException("Movie List in adapter cannot be null");
 
-	private void validateMovieList(List<MovieModel> pMovieList) {
-		if (pMovieList == null)
-			throw new NullPointerException("Movie List in adapter cannot be null");
+    }
 
-	}
+    public interface OnItemClickListener {
+        void onMovieItemClicked(MovieModel pMovieModel, int[] pLoc);
+    }
 
-	public interface OnItemClickListener {
-		void onMovieItemClicked(MovieModel pMovieModel, int[] pLoc);
-	}
-
-	@BindingAdapter("app:imageUrl")
-	public static void setMovieImage(ImageView pMovieImage, String pUrl) {
-		Glide.with(pMovieImage.getContext())
-				.load(pUrl)
-				.centerCrop()
-				.animate(android.R.anim.fade_in)
-				.into(pMovieImage);
-	}
+    @BindingAdapter("app:imageUrl")
+    public static void setMovieImage(ImageView pMovieImage, String pUrl) {
+        Picasso.with(pMovieImage.getContext())
+                .load(pUrl)
+                .fit()
+                .into(pMovieImage);
+    }
 }
