@@ -1,5 +1,8 @@
 package io.thappx.data.exception;
 
+/**
+ * Exception thrown when there is an error connecting to the internet
+ */
 public class NetworkConnectionException extends Exception {
     public NetworkConnectionException() {
         super();

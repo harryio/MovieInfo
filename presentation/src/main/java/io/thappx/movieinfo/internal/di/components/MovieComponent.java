@@ -6,10 +6,15 @@ import io.thappx.movieinfo.internal.di.modules.MovieModule;
 import io.thappx.movieinfo.view.fragment.MovieDetailFragment;
 import io.thappx.movieinfo.view.fragment.MovieListFragment;
 
+/**
+ * A scope {@link PerActivity} component.
+ * Injects user specific Fragments.
+ */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class,
-		modules = {MovieModule.class})
+        modules = {MovieModule.class})
 public interface MovieComponent {
-	void inject(MovieListFragment pMovieListFragment);
-	void inject(MovieDetailFragment pMovieDetailFragment);
+    void inject(MovieListFragment pMovieListFragment);
+
+    void inject(MovieDetailFragment pMovieDetailFragment);
 }

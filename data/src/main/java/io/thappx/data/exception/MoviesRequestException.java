@@ -1,5 +1,8 @@
 package io.thappx.data.exception;
 
+/**
+ * Exception thrown when an error occurs while fetching movies
+ */
 public class MoviesRequestException extends Exception {
     public MoviesRequestException() {
         super();

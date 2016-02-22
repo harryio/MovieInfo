@@ -9,6 +9,9 @@ import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
+/**
+ * A retrofit representation of the api calls
+ */
 public interface MovieService {
     @GET("movie/popular")
     Call<MovieWrapper> getPopularMovies(@Query("api_key") String api_key);

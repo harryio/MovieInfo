@@ -1,5 +1,8 @@
 package io.appx.domain.model;
 
+/**
+ * Movie cast representation in the domain layer
+ */
 public class Cast {
 	private String mCast;
 	private long mMovieId;

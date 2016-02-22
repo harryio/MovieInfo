@@ -1,5 +1,8 @@
 package io.thappx.data.entity;
 
+/**
+ * POJO representing cast of a movie
+ */
 public class Cast {
 	String name;
 	String profile_path;

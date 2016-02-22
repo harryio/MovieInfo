@@ -3,6 +3,9 @@ package io.thappx.data.entity;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 
+/**
+ * POJO representing one movie
+ */
 @StorIOSQLiteType(table = "movies")
 public class MovieEntity {
     @StorIOSQLiteColumn(name = "movie_id", key = true)

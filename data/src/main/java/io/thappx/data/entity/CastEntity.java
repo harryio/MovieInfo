@@ -3,6 +3,9 @@ package io.thappx.data.entity;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 
+/**
+ * Wrapper class for cast of the movie
+ */
 @StorIOSQLiteType(table = "cast")
 public class CastEntity {
 	Cast[] cast;

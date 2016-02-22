@@ -17,75 +17,77 @@ import io.thappx.data.repository.datastore.MovieDataStore;
 import io.thappx.data.repository.datastore.MovieDataStoreFactory;
 import rx.Observable;
 
+@SuppressWarnings("Convert2MethodRef")
 @Singleton
 public class MovieDataRepository implements MovieRepository {
-	private final MovieDataStoreFactory mMovieDataStoreFactory;
-	private final MovieEntityDataMapper mMovieEntityDataMapper;
+    private final MovieDataStoreFactory mMovieDataStoreFactory;
+    private final MovieEntityDataMapper mMovieEntityDataMapper;
 
-	@Inject
-	public MovieDataRepository(MovieDataStoreFactory pMovieDataStoreFactory,
-							   MovieEntityDataMapper pMovieEntityDataMapper) {
-		mMovieDataStoreFactory = pMovieDataStoreFactory;
-		mMovieEntityDataMapper = pMovieEntityDataMapper;
-	}
+    @Inject
+    public MovieDataRepository(MovieDataStoreFactory pMovieDataStoreFactory,
+                               MovieEntityDataMapper pMovieEntityDataMapper) {
+        mMovieDataStoreFactory = pMovieDataStoreFactory;
+        mMovieEntityDataMapper = pMovieEntityDataMapper;
+    }
 
-	@Override
-	public Observable<List<Movie>> getMovies(@Movie.Type String movieType) {
-		Observable<List<Movie>> lMovieList = null;
-		MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieStore(movieType);
+    @Override
+    public Observable<List<Movie>> getMovies(@Movie.Type String movieType) {
+        Observable<List<Movie>> lMovieList = null;
+        MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieStore(movieType);
 
-		switch (movieType) {
-			case Movie.POPULAR:
-				lMovieList = lMovieDataStore.popularMoviesList()
-						.map(t -> {
-							return mMovieEntityDataMapper.transform(t);
-						});
-				break;
+        switch (movieType) {
+            case Movie.POPULAR:
+                lMovieList = lMovieDataStore.popularMoviesList()
+                        .map(t -> {
+                            return mMovieEntityDataMapper.transform(t);
+                        });
+                break;
 
-			case Movie.UPCOMING:
-				lMovieList = lMovieDataStore.upcomingMoviesList()
-						.map(t -> {
-							return mMovieEntityDataMapper.transform(t);
-						});
-				break;
+            case Movie.UPCOMING:
+                lMovieList = lMovieDataStore.upcomingMoviesList()
+                        .map(t -> {
+                            return mMovieEntityDataMapper.transform(t);
+                        });
+                break;
 
-			case Movie.TOP_RATED:
-				lMovieList = lMovieDataStore.topRatedMoviesList()
-						.map(t -> {
-							return mMovieEntityDataMapper.transform(t);
-						});
-				break;
+            case Movie.TOP_RATED:
+                lMovieList = lMovieDataStore.topRatedMoviesList()
+                        .map(t -> {
+                            return mMovieEntityDataMapper.transform(t);
+                        });
+                break;
 
-			case Movie.NOW_SHOWING:
-				lMovieList = lMovieDataStore.nowShowingMoviesList()
-						.map(t -> {
-							return mMovieEntityDataMapper.transform(t);
-						});
-				break;
+            case Movie.NOW_SHOWING:
+                lMovieList = lMovieDataStore.nowShowingMoviesList()
+                        .map(t -> {
+                            return mMovieEntityDataMapper.transform(t);
+                        });
+                break;
 
-			default: lMovieList = Observable.just(Collections.emptyList());
-		}
+            default:
+                lMovieList = Observable.just(Collections.emptyList());
+        }
 
-		return lMovieList;
-	}
+        return lMovieList;
+    }
 
-	@Override
-	public Observable<MovieDetail> getMovieDetail(long id) {
-		MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieDetailStore(id);
-		Observable<MovieDetailEntity> lObservable = lMovieDataStore.movieDetail(id);
+    @Override
+    public Observable<MovieDetail> getMovieDetail(long id) {
+        MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieDetailStore(id);
+        Observable<MovieDetailEntity> lObservable = lMovieDataStore.movieDetail(id);
 
-		return lObservable.map(t ->{
-			return mMovieEntityDataMapper.transform(t);
-		});
-	}
+        return lObservable.map(t -> {
+            return mMovieEntityDataMapper.transform(t);
+        });
+    }
 
-	@Override
-	public Observable<Cast> getMovieCast(long id) {
-		MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieDetailStore(id);
-		Observable<CastEntity> lObservable = lMovieDataStore.movieCast(id);
+    @Override
+    public Observable<Cast> getMovieCast(long id) {
+        MovieDataStore lMovieDataStore = mMovieDataStoreFactory.createMovieDetailStore(id);
+        Observable<CastEntity> lObservable = lMovieDataStore.movieCast(id);
 
-		return lObservable.map(t ->{
-			return mMovieEntityDataMapper.transform(t);
-		});
-	}
+        return lObservable.map(t -> {
+            return mMovieEntityDataMapper.transform(t);
+        });
+    }
 }

@@ -1,5 +1,9 @@
 package io.thappx.data.entity;
 
+/**
+ * Class representing configuration of the images to be used while fetching them
+ * as described in the api documentation
+ */
 public class Configuration {
 	private final String QUALITY_DESIRED    = "w780";
 	private final String QUALITY_ORIGINAL   = "original";

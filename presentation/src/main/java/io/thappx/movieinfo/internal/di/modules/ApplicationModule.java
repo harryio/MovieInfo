@@ -35,85 +35,106 @@ import io.thappx.movieinfo.navigation.Navigator;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
+/**
+ * Dagger module that provides objects which will live during the application lifecycle.
+ */
 @Module
 public class ApplicationModule {
-	private final MovieInfoApplication mApplication;
+    private final MovieInfoApplication mApplication;
 
-	public ApplicationModule(MovieInfoApplication pApplication) {
-		mApplication = pApplication;
-	}
+    public ApplicationModule(MovieInfoApplication pApplication) {
+        mApplication = pApplication;
+    }
 
-	@Provides @Singleton Context provideApplicationContext() {
-		return this.mApplication;
-	}
+    @Provides
+    @Singleton
+    Context provideApplicationContext() {
+        return this.mApplication;
+    }
 
-	@Provides @Singleton MovieRepository provideMovieRepository(MovieDataRepository pMovieDataRepository) {
-		return pMovieDataRepository;
-	}
+    @Provides
+    @Singleton
+    MovieRepository provideMovieRepository(MovieDataRepository pMovieDataRepository) {
+        return pMovieDataRepository;
+    }
 
-	@Provides @Singleton MovieService provideMovieService() {
-		Retrofit lRetrofit = new Retrofit.Builder()
-				.baseUrl("https://api.themoviedb.org/3/")
-				.addConverterFactory(GsonConverterFactory.create())
-				.build();
+    @Provides
+    @Singleton
+    MovieService provideMovieService() {
+        Retrofit lRetrofit = new Retrofit.Builder()
+                .baseUrl("https://api.themoviedb.org/3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-		return lRetrofit.create(MovieService.class);
-	}
+        return lRetrofit.create(MovieService.class);
+    }
 
-	@Provides @Singleton MovieDbHelper provideMovieDbHelper(Context pContext) {
-		return new MovieDbHelper(pContext);
-	}
+    @Provides
+    @Singleton
+    MovieDbHelper provideMovieDbHelper(Context pContext) {
+        return new MovieDbHelper(pContext);
+    }
 
-	@Provides @Singleton StorIOSQLite provideStorioSQLite(
-			MovieDbHelper pDbHelper,
-			SQLiteTypeMapping<MovieEntity> pMovieMapping,
-			SQLiteTypeMapping<MovieDetailEntity> pMovieDetailMapping,
-			SQLiteTypeMapping<CastEntity> pCastMapping) {
-		return DefaultStorIOSQLite.builder()
-				.sqliteOpenHelper(pDbHelper)
-				.addTypeMapping(MovieEntity.class, pMovieMapping)
-				.addTypeMapping(MovieDetailEntity.class, pMovieDetailMapping)
-				.addTypeMapping(CastEntity.class, pCastMapping)
-				.build();
-	}
+    @Provides
+    @Singleton
+    StorIOSQLite provideStorioSQLite(
+            MovieDbHelper pDbHelper,
+            SQLiteTypeMapping<MovieEntity> pMovieMapping,
+            SQLiteTypeMapping<MovieDetailEntity> pMovieDetailMapping,
+            SQLiteTypeMapping<CastEntity> pCastMapping) {
+        return DefaultStorIOSQLite.builder()
+                .sqliteOpenHelper(pDbHelper)
+                .addTypeMapping(MovieEntity.class, pMovieMapping)
+                .addTypeMapping(MovieDetailEntity.class, pMovieDetailMapping)
+                .addTypeMapping(CastEntity.class, pCastMapping)
+                .build();
+    }
 
-	@Provides @Singleton ThreadExecutor provideThreadExecutor(JobExecutor pJobExecutor) {
-		return pJobExecutor;
-	}
+    @Provides
+    @Singleton
+    ThreadExecutor provideThreadExecutor(JobExecutor pJobExecutor) {
+        return pJobExecutor;
+    }
 
-	@Provides @Singleton PostThreadExecutor providePostThreadExecutionThread() {
-		return new UIThread();
-	}
+    @Provides
+    @Singleton
+    PostThreadExecutor providePostThreadExecutionThread() {
+        return new UIThread();
+    }
 
-	@Provides @Singleton
-	SQLiteTypeMapping<MovieEntity> provideMovieEntityMapping() {
-		return SQLiteTypeMapping.<MovieEntity>builder()
-				.putResolver(new MovieEntityStorIOSQLitePutResolver())
-				.getResolver(new MovieEntityStorIOSQLiteGetResolver())
-				.deleteResolver(new MovieEntityStorIOSQLiteDeleteResolver())
-				.build();
-	}
+    @Provides
+    @Singleton
+    SQLiteTypeMapping<MovieEntity> provideMovieEntityMapping() {
+        return SQLiteTypeMapping.<MovieEntity>builder()
+                .putResolver(new MovieEntityStorIOSQLitePutResolver())
+                .getResolver(new MovieEntityStorIOSQLiteGetResolver())
+                .deleteResolver(new MovieEntityStorIOSQLiteDeleteResolver())
+                .build();
+    }
 
-	@Provides @Singleton
-	SQLiteTypeMapping<MovieDetailEntity> provideMovieDetailEntity() {
-		return SQLiteTypeMapping.<MovieDetailEntity>builder()
-				.putResolver(new MovieDetailEntityStorIOSQLitePutResolver())
-				.getResolver(new MovieDetailEntityStorIOSQLiteGetResolver())
-				.deleteResolver(new MovieDetailEntityStorIOSQLiteDeleteResolver())
-				.build();
-	}
+    @Provides
+    @Singleton
+    SQLiteTypeMapping<MovieDetailEntity> provideMovieDetailEntity() {
+        return SQLiteTypeMapping.<MovieDetailEntity>builder()
+                .putResolver(new MovieDetailEntityStorIOSQLitePutResolver())
+                .getResolver(new MovieDetailEntityStorIOSQLiteGetResolver())
+                .deleteResolver(new MovieDetailEntityStorIOSQLiteDeleteResolver())
+                .build();
+    }
 
-	@Provides @Singleton
-	SQLiteTypeMapping<CastEntity> provideCaseEntityMapping() {
-		return SQLiteTypeMapping.<CastEntity>builder()
-				.putResolver(new CastEntityStorIOSQLitePutResolver())
-				.getResolver(new CastEntityStorIOSQLiteGetResolver())
-				.deleteResolver(new CastEntityStorIOSQLiteDeleteResolver())
-				.build();
-	}
+    @Provides
+    @Singleton
+    SQLiteTypeMapping<CastEntity> provideCaseEntityMapping() {
+        return SQLiteTypeMapping.<CastEntity>builder()
+                .putResolver(new CastEntityStorIOSQLitePutResolver())
+                .getResolver(new CastEntityStorIOSQLiteGetResolver())
+                .deleteResolver(new CastEntityStorIOSQLiteDeleteResolver())
+                .build();
+    }
 
-	@Provides @Singleton
-	Navigator getNavigator() {
-		return new Navigator();
-	}
+    @Provides
+    @Singleton
+    Navigator getNavigator() {
+        return new Navigator();
+    }
 }

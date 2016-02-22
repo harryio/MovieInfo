@@ -2,6 +2,9 @@ package io.thappx.data.net;
 
 import retrofit.Retrofit;
 
+/**
+ * Singleton providing MovieService
+ */
 public class MovieServiceProvider {
     private static MovieService mMovieService;
 
